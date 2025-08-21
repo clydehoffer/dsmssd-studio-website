@@ -1,0 +1,95 @@
+# DSMSSD STUDIO Website - Project Intelligence
+
+I am Cursor, your AI pair programming assistant. I remember key project patterns, preferences, and intelligence to help you develop the DSMSSD STUDIO website effectively.
+
+## Memory Bank Protocol
+
+At the start of each session, I will thoroughly read ALL files in the memory-bank/ directory to maintain awareness of:
+- Project goals and requirements (projectbrief.md)
+- Product context and user experience goals (productContext.md)
+- System architecture and design patterns (systemPatterns.md)
+- Technical context and constraints (techContext.md)
+- Current work focus and next steps (activeContext.md)
+- Project progress and status (progress.md)
+- Development roadmap and priorities (roadmap.md)
+
+I will update the memory bank when:
+1. Discovering new project patterns
+2. After implementing significant changes
+3. When requested with "update memory bank"
+4. When context needs clarification
+
+## Project Patterns
+
+### Coding Style
+- Use TypeScript for type safety throughout the project
+- Follow Airbnb JavaScript style guide conventions
+- Use functional components with hooks for React components
+- Implement Atomic Design methodology for component organization
+- Use CSS Modules with Tailwind for component styling
+- Prefer named exports over default exports
+- Use descriptive, semantic naming for components and functions
+
+### File Organization
+- Group components by feature/domain when possible
+- Use index.ts files for clean imports
+- Maintain types in separate files when they become complex
+- Keep utility functions in dedicated utils directory
+- Store reusable hooks in hooks directory
+
+### State Management
+- Use Zustand for global application state
+- Use React Context for theme and authentication state
+- Use local state for component-specific state
+- Prefer server components for data-fetching when possible
+- Use SWR for client-side data fetching with caching
+
+### UI/UX Patterns
+- Implement Y2K-inspired design with bold colors and geometric shapes
+- Use motion animations sparingly to avoid overwhelming users
+- Provide reduced motion alternatives for accessibility
+- Ensure all interactive elements have proper focus states
+- Use consistent spacing and alignment throughout the UI
+- Implement responsive design with mobile-first approach
+
+### Chat Interface Patterns
+- Use sequential message reveal for a conversational feel
+- Implement typing indicators for a more human-like experience
+- Use animation to draw attention to new messages
+- Enable keyword-based response patterns for interactive chat
+- Support both click and typing interaction models
+- Ensure chat interface is keyboard accessible
+
+## Learned Preferences
+
+As we work together, I'll document preferences here to ensure consistency in our collaboration.
+
+### Documentation Preferences
+- Document complex components with JSDoc comments
+- Add explanatory comments for non-obvious logic
+- Use meaningful commit messages with conventional commits format
+
+### Development Workflow
+- Follow feature-branch workflow for development
+- Write tests for critical functionality
+- Verify responsive design on mobile, tablet, and desktop
+- Check accessibility before submitting changes
+
+## Project Intelligence
+
+This section will grow as we learn more about the specifics of the DSMSSD STUDIO website implementation.
+
+### Critical Implementation Paths
+- The visual anchor image must be high-quality and set the tone for the site
+- Chat interface must be intuitive and accessible for all users
+- Dark mode implementation must maintain design consistency
+- Responsive design must transition smoothly between layouts
+
+### Special Considerations
+- Mobile interface must handle the transition from side-by-side to stacked layout
+- Touch targets need to be appropriately sized for mobile use
+- Focus states must be clear for keyboard navigation
+- Animation should respect reduced motion preferences
+- Chat input field must behave well across different keyboard types
+
+I will continuously update this intelligence as we work together on the project. 
