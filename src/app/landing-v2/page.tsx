@@ -29,6 +29,17 @@ export default function LandingV2() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
 
+  // Helper function to optimize Supabase images for faster loading
+  const optimizeSupabaseImage = (url: string, width: number = 400, height: number = 300, quality: number = 60) => {
+    if (!url.includes('supabase.co')) return url;
+    
+    // Remove existing query parameters
+    const baseUrl = url.split('?')[0];
+    
+    // Add Supabase image transformation parameters for much smaller file sizes
+    return `${baseUrl}?width=${width}&height=${height}&resize=contain&quality=${quality}&format=webp`;
+  };
+
   // Function to check if two rectangles overlap
   const doRectanglesOverlap = (rect1: { x: number; y: number; width: number; height: number }, 
                               rect2: { x: number; y: number; width: number; height: number }) => {
@@ -277,12 +288,13 @@ export default function LandingV2() {
     const getRandomImage = () => {
       const allImages: Array<{image: string, title: string, project: string}> = [];
       
-      // Collect all images from gallery data
+      // Collect all images from gallery data with proper optimization
       Object.entries(galleryData).forEach(([projectId, images]) => {
         images.forEach((item, index) => {
           allImages.push({
-            image: item.thumbnail,
-            title: `${item.originalTitle || `Image ${index + 1}`}`,
+            // Use heavily optimized image: 400x300px, 60% quality, WebP format
+            image: optimizeSupabaseImage(item.original, 400, 300, 60),
+            title: `${item.title || `Image ${index + 1}`}`,
             project: `Project ${projectId}`
           });
         });
@@ -506,8 +518,8 @@ export default function LandingV2() {
                 {/* Page Title Hover Animation */}
                 <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
                   <span className="text-white text-xs font-medium whitespace-nowrap">Portfolio</span>
-                </div>
-              </button>
+              </div>
+            </button>
             </div>
 
             {/* 3. About (Center Top) */}
@@ -520,8 +532,8 @@ export default function LandingV2() {
                 {/* Page Title Hover Animation */}
                 <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
                   <span className="text-white text-xs font-medium whitespace-nowrap">About</span>
-                </div>
-              </button>
+              </div>
+            </button>
             </div>
 
             {/* 4. Services (Right) */}
@@ -534,8 +546,8 @@ export default function LandingV2() {
                 {/* Page Title Hover Animation */}
                 <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
                   <span className="text-white text-xs font-medium whitespace-nowrap">Services</span>
-                </div>
-              </button>
+              </div>
+            </button>
             </div>
 
             {/* 5. Contact (Far Right) */}
@@ -548,8 +560,8 @@ export default function LandingV2() {
                 {/* Page Title Hover Animation */}
                 <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
                   <span className="text-white text-xs font-medium whitespace-nowrap">Contact</span>
-                </div>
-              </button>
+              </div>
+            </button>
             </div>
 
           </div>
@@ -576,7 +588,7 @@ export default function LandingV2() {
           {/* Hint text with glassmorphism */}
           <div className="absolute -top-10 sm:-top-12 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300">
             <span className="text-white text-xs font-medium whitespace-nowrap">Click to navigate</span>
-          </div>
+        </div>
         </button>
       </div>
 
@@ -587,16 +599,16 @@ export default function LandingV2() {
             {/* Modern Title Bar */}
             <div className="flex justify-between items-center p-6 border-b border-white/10">
               <div className="text-white text-lg font-medium">{activePopup.charAt(0).toUpperCase() + activePopup.slice(1)}</div>
-              <button 
-                onClick={() => setActivePopup(null)}
+                <button 
+                  onClick={() => setActivePopup(null)}
                 className="w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 border border-red-500/30 flex items-center justify-center transition-all duration-200"
-                aria-label="Close"
+                  aria-label="Close"
               >
                 <span className="text-white text-sm">×</span>
               </button>
             </div>
             
-            {/* Content */}
+                         {/* Content */}
              <div className="p-6">
                <div className="flex items-center space-x-3 mb-4">
                  <img 
@@ -779,13 +791,13 @@ export default function LandingV2() {
                 <div className="text-white text-sm font-medium">
                   Project {projectId} - DSMSSD Studio
                 </div>
-                <button 
-                  onClick={() => {
-                    console.log('Closing window:', projectId);
-                    setOpenProjectWindows(openProjectWindows.filter(id => id !== projectId));
-                  }}
+                  <button 
+                    onClick={() => {
+                      console.log('Closing window:', projectId);
+                      setOpenProjectWindows(openProjectWindows.filter(id => id !== projectId));
+                    }}
                   className="w-6 h-6 rounded-full bg-red-500/20 hover:bg-red-500/40 border border-red-500/30 flex items-center justify-center transition-all duration-200"
-                  aria-label="Close"
+                    aria-label="Close"
                 >
                   <span className="text-white text-xs">×</span>
                 </button>
@@ -1005,7 +1017,11 @@ export default function LandingV2() {
               src={popup.image} 
               alt={popup.title}
               className="w-full h-48 object-contain bg-black border border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
-              onClick={() => setLightboxImage(popup.image)}
+              onClick={() => {
+                // For lightbox, use larger optimized version (1200px wide, higher quality)
+                const lightboxUrl = optimizeSupabaseImage(popup.image.split('?')[0], 1200, 800, 85);
+                setLightboxImage(lightboxUrl);
+              }}
               onError={(e) => {
                 console.error('Failed to load image:', popup.image);
                 e.currentTarget.style.display = 'none';
