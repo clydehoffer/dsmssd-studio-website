@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import WelcomeAnimation from '@/components/home/WelcomeAnimation';
+import ImagePreloader from '@/components/ui/ImagePreloader';
 import { galleryData } from '@/data/galleryData';
 
 export default function LandingV2() {
   const [loading, setLoading] = useState(true);
+  const [imagesPreloaded, setImagesPreloaded] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [activePopup, setActivePopup] = useState<string | null>(null);
   const [openProjectWindows, setOpenProjectWindows] = useState<number[]>([]);
@@ -26,6 +29,11 @@ export default function LandingV2() {
   const [resizedWindow, setResizedWindow] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
+
+  // Get all portfolio images for preloading
+  const portfolioImages = Object.values(galleryData).flatMap(galleryItems => 
+    galleryItems.map(item => item.original)
+  );
 
   // Function to check if two rectangles overlap
   const doRectanglesOverlap = (rect1: { x: number; y: number; width: number; height: number }, 
@@ -156,16 +164,23 @@ export default function LandingV2() {
   };
 
   useEffect(() => {
-    // Simulate loading delay
+    // Wait for both time and image preloading
     const timer = setTimeout(() => {
-      setLoading(false);
-      setShowWelcome(true); // Show welcome animation after loading
+      if (imagesPreloaded) {
+        setLoading(false);
+        setShowWelcome(true); // Show welcome animation after loading
+      }
     }, 2500); // Slightly longer to allow loading animation to complete
 
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [imagesPreloaded]);
+
+  // Handle image preload completion
+  const handleImagesPreloaded = () => {
+    setImagesPreloaded(true);
+  };
 
   // Optional: check if user has seen the welcome animation recently
   useEffect(() => {
@@ -405,6 +420,11 @@ export default function LandingV2() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {/* Preload all portfolio images */}
+      <ImagePreloader 
+        images={portfolioImages} 
+        onLoadComplete={handleImagesPreloaded}
+      />
       {/* CSS Animation Styles */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes iconSlideIn {
@@ -545,11 +565,17 @@ export default function LandingV2() {
                   {/* Full Portfolio Image with Retro CRT Frame - Clickable */}
                   <div className="border-4 border-gray-600 bg-black p-2 mb-4">
                     <div className="border-2 border-gray-400 bg-gray-800 p-1">
-                      <img 
+                      <Image 
                         src={popup.image} 
                         alt={popup.title}
+                        width={400}
+                        height={192}
                         className="w-full h-48 object-contain bg-black border border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
                         onClick={() => setLightboxImage(popup.image)}
+                        priority={true}
+                        quality={85}
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                         }}
@@ -673,10 +699,13 @@ export default function LandingV2() {
           className="group w-12 h-12 sm:w-16 sm:h-16 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-white/30"
           data-logo-nav
         >
-          <img 
+          <Image 
             src="/images/logo/logo mark.svg" 
             alt="DSMSSD Studio" 
+            width={40}
+            height={40}
             className="w-8 h-8 sm:w-10 sm:h-10 filter brightness-0 invert"
+            priority={true}
           />
           
           {/* Glow effect */}
@@ -1019,11 +1048,15 @@ export default function LandingV2() {
             >
               <span className="text-white text-xl font-bold">×</span>
             </button>
-            <img 
+            <Image 
               src={lightboxImage} 
               alt="Portfolio lightbox view"
+              width={1200}
+              height={800}
               className="max-w-full max-h-full object-contain rounded-xl"
               onClick={(e) => e.stopPropagation()}
+              priority={true}
+              quality={95}
             />
             
             {/* Lightbox Info */}
