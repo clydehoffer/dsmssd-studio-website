@@ -1027,12 +1027,12 @@ export default function LandingV2() {
                 }}
                 onLoad={(e) => {
                   // Hide loading indicator when image loads
-                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator');
+                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator') as HTMLElement;
                   if (loadingEl) loadingEl.style.display = 'none';
                 }}
                 onError={(e) => {
                   console.error('Failed to load image:', popup.image);
-                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator');
+                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator') as HTMLElement;
                   if (loadingEl) {
                     loadingEl.textContent = 'Failed to load';
                     loadingEl.className = 'loading-indicator absolute inset-0 flex items-center justify-center text-red-400 text-xs';
