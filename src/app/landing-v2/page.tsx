@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import WelcomeAnimation from '@/components/home/WelcomeAnimation';
-import ImagePreloader from '@/components/ui/ImagePreloader';
+
 import { galleryData } from '@/data/galleryData';
 
 export default function LandingV2() {
   const [loading, setLoading] = useState(true);
-  const [imagesPreloaded, setImagesPreloaded] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [activePopup, setActivePopup] = useState<string | null>(null);
   const [openProjectWindows, setOpenProjectWindows] = useState<number[]>([]);
@@ -29,11 +28,6 @@ export default function LandingV2() {
   const [resizedWindow, setResizedWindow] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
-
-  // Get the main images plus a few more from each portfolio for smarter preloading
-  const portfolioImages = Object.values(galleryData).flatMap(galleryItems => 
-    galleryItems.slice(0, 4).map(item => item.original) // First 4 from each (24 total)
-  );
 
   // Function to check if two rectangles overlap
   const doRectanglesOverlap = (rect1: { x: number; y: number; width: number; height: number }, 
