@@ -412,11 +412,7 @@ export default function LandingV2() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Preload all portfolio images */}
-      <ImagePreloader 
-        images={portfolioImages} 
-        onLoadComplete={handleImagesPreloaded}
-      />
+
       {/* CSS Animation Styles */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes iconSlideIn {
