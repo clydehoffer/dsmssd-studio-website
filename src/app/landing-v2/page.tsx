@@ -412,7 +412,6 @@ export default function LandingV2() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-
       {/* CSS Animation Styles */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes iconSlideIn {
@@ -429,40 +428,29 @@ export default function LandingV2() {
             transform: scale(1) translateY(0px);
           }
         }
-        
-        @keyframes virusPopupSlideIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.8) translateY(-10px);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1) translateY(0px);
-          }
-        }
-        
+
         @keyframes virusPopupInstant {
           0% {
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.8);
           }
           100% {
             opacity: 1;
             transform: scale(1);
           }
         }
-        
-        @keyframes virusPopupShake {
-          0%, 100% { transform: translateX(0px); }
-          25% { transform: translateX(-2px); }
-          75% { transform: translateX(2px); }
-        }
-        
+
         @keyframes virusPopupBlink {
-          0%, 50% { opacity: 1; }
-          51%, 100% { opacity: 0.7; }
+          0%, 50% { 
+            background: linear-gradient(90deg, #0053d4 0%, #0066ff 50%, #0053d4 100%); 
+          }
+          50.1%, 100% { 
+            background: linear-gradient(90deg, #ff0000 0%, #ff3333 50%, #ff0000 100%); 
+          }
         }
-      `}} />
+      `}}/>
+
+
       {/* Updated Visual Background */}
       <div className="fixed inset-0 z-0">
         <video
@@ -483,116 +471,8 @@ export default function LandingV2() {
         {showWelcome && <WelcomeAnimation />}
       </div>
 
-      {/* Vintage Virus-Style Portfolio Popups */}
-      {ambientPopups.map((popup, index) => {
-        const virusStyles = [
-          {
-            titleBg: 'bg-red-600',
-            icon: '⚠️',
-            title: 'SYSTEM WARNING',
-            message: 'Dangerous levels of creativity detected!',
-            subtext: 'Exposure may cause inspiration overflow.'
-          },
-          {
-            titleBg: 'bg-yellow-600',
-            icon: '🚨',
-            title: 'SECURITY ALERT',
-            message: 'Unauthorized talent infiltration!',
-            subtext: 'Portfolio quality exceeds system limits.'
-          },
-          {
-            titleBg: 'bg-blue-600',
-            icon: '⚡',
-            title: 'SYSTEM ERROR',
-            message: 'Creative.exe has exceeded expectations!',
-            subtext: 'File corrupted with pure talent.'
-          },
-          {
-            titleBg: 'bg-purple-600',
-            icon: '🔥',
-            title: 'VIRUS DETECTED',
-            message: 'Malicious amounts of skill found!',
-            subtext: 'Recommend immediate portfolio viewing.'
-          }
-        ];
-        
-        const style = virusStyles[index % virusStyles.length];
-        
-        return (
-          <div
-            key={popup.id}
-            className="fixed z-20 pointer-events-none"
-            style={{
-              left: `${popup.x}px`,
-              top: `${popup.y}px`,
-              animation: `virusPopupInstant 0.1s ease-out forwards, virusPopupShake 3s ease-in-out infinite`
-            }}
-          >
-            <div className="bg-gray-200 border-2 border-gray-600 shadow-lg w-96" style={{ 
-              boxShadow: '4px 4px 0px #000000, 8px 8px 0px #808080',
-              fontFamily: 'monospace'
-            }}>
-              {/* Classic Blinking Title Bar */}
-              <div className={`${style.titleBg} text-white px-4 py-2 flex items-center justify-between text-base font-bold`} style={{ animation: 'virusPopupBlink 1.5s infinite' }}>
-                <span>{style.icon} {style.title}</span>
-                <span className="text-gray-200 text-xl leading-none">×</span>
-              </div>
-              
-              {/* Retro Dialog Content */}
-              <div className="p-6 bg-gray-100 border-t border-gray-300">
-                <div className="mb-4">
-                  {/* Warning Message */}
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="text-red-600 text-4xl">{style.icon}</div>
-                    <div className="flex-1">
-                      <div className="text-black text-lg font-bold mb-1">{style.message}</div>
-                      <div className="text-gray-700 text-sm">{style.subtext}</div>
-                    </div>
-                  </div>
-                  
-                  {/* Full Portfolio Image with Retro CRT Frame - Clickable */}
-                  <div className="border-4 border-gray-600 bg-black p-2 mb-4">
-                    <div className="border-2 border-gray-400 bg-gray-800 p-1">
-                      <img 
-                        src={popup.image} 
-                        alt={popup.title}
-                        className="w-full h-48 object-contain bg-black border border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
-                        onClick={() => setLightboxImage(popup.image)}
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* File Info */}
-                  <div className="text-gray-800 text-sm font-mono bg-white border-2 border-gray-400 px-3 py-2 mb-4">
-                    <div className="flex justify-between">
-                      <span>FILE:</span>
-                      <span className="truncate ml-2">{popup.title}</span>
-                    </div>
-                    <div className="flex justify-between mt-1">
-                      <span>STATUS:</span>
-                      <span className="text-red-600 font-bold">INFECTED WITH TALENT</span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Single Action Button */}
-                <div className="flex justify-center pt-3 border-t border-gray-400">
-                  <button 
-                    onClick={() => window.location.href = '/contact'}
-                    className="bg-red-600 hover:bg-red-700 border-2 border-gray-800 px-8 py-3 text-base font-bold text-white cursor-pointer pointer-events-auto transition-all duration-200 hover:scale-105"
-                    style={{ boxShadow: '3px 3px 0px #000000' }}
-                  >
-                    🚨 HIRE CREATOR
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+
+
 
       {/* Logo Navigation Hub */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
@@ -1044,6 +924,122 @@ export default function LandingV2() {
           </div>
         </div>
       )}
+
+      {/* Virus-style Ambient Popups */}
+      {ambientPopups.map((popup) => (
+        <div
+          key={popup.id}
+          className="fixed bg-gray-200 border-2 border-gray-400 shadow-xl"
+          style={{
+            left: `${popup.x}px`,
+            top: `${popup.y}px`,
+            width: '384px', // w-96
+            zIndex: 1000,
+            animation: 'virusPopupInstant 0.1s ease-out',
+            fontFamily: '"MS Sans Serif", sans-serif',
+            fontSize: '11px'
+          }}
+        >
+          {/* Title Bar with Blinking Effect */}
+          <div 
+            className="bg-blue-600 text-white px-2 py-1 flex justify-between items-center border-b border-gray-400"
+            style={{ 
+              background: 'linear-gradient(90deg, #0053d4 0%, #0066ff 50%, #0053d4 100%)',
+              animation: 'virusPopupBlink 2s infinite'
+            }}
+          >
+            <div className="flex items-center space-x-2">
+              <span className="text-yellow-300 text-sm">⚠️</span>
+              <span className="font-bold text-xs">
+                {popup.title.includes('Project 1') ? 'SYSTEM ERROR' :
+                 popup.title.includes('Project 2') ? 'VIRUS DETECTED' :
+                 popup.title.includes('Project 3') ? 'SECURITY ALERT' :
+                 popup.title.includes('Project 4') ? 'WARNING' :
+                 popup.title.includes('Project 5') ? 'CRITICAL ERROR' :
+                 popup.title.includes('Project 6') ? 'MALWARE ALERT' : 'SYSTEM NOTIFICATION'}
+              </span>
+            </div>
+            <button 
+              onClick={() => setAmbientPopups(prev => prev.filter(p => p.id !== popup.id))}
+              className="text-white hover:bg-red-500 w-4 h-4 flex items-center justify-center text-xs font-bold"
+            >
+              ×
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-3 bg-gray-200">
+            <div className="flex items-start space-x-3">
+              <div className="flex-shrink-0">
+                <span className="text-2xl">
+                  {popup.title.includes('Project 1') ? '⚠️' :
+                   popup.title.includes('Project 2') ? '🔥' :
+                   popup.title.includes('Project 3') ? '🚨' :
+                   popup.title.includes('Project 4') ? '⚡' :
+                   popup.title.includes('Project 5') ? '💀' :
+                   popup.title.includes('Project 6') ? '👁️' : '🔔'}
+                </span>
+              </div>
+              <div className="flex-1">
+                <div className="text-black text-xs font-bold mb-1">
+                  {popup.title.includes('Project 1') ? 'Creative.exe has exceeded expectations!' :
+                   popup.title.includes('Project 2') ? 'Unauthorized talent infiltration!' :
+                   popup.title.includes('Project 3') ? 'Suspicious activity detected!' :
+                   popup.title.includes('Project 4') ? 'Dangerous levels of creativity detected!' :
+                   popup.title.includes('Project 5') ? 'Fatal attraction to design!' :
+                   popup.title.includes('Project 6') ? 'Malicious amounts of skill found!' : 'Creative overflow detected!'}
+                </div>
+                <div className="text-gray-600 text-xs mb-2">
+                  {popup.title.includes('Project 1') ? 'File corrupted with pure talent.' :
+                   popup.title.includes('Project 2') ? 'Portfolio quality exceeds system limits.' :
+                   popup.title.includes('Project 3') ? 'Recommend immediate portfolio viewing.' :
+                   popup.title.includes('Project 4') ? 'This creativity may cause inspiration overflow.' :
+                   popup.title.includes('Project 5') ? 'Warning: Viewing may result in amazement.' :
+                   popup.title.includes('Project 6') ? 'Skill level detected: LEGENDARY.' : 'Viewing recommended immediately.'}
+                </div>
+              </div>
+            </div>
+
+            {/* Image Display */}
+            <img 
+              src={popup.image} 
+              alt={popup.title}
+              className="w-full h-48 object-contain bg-black border border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
+              onClick={() => setLightboxImage(popup.image)}
+              onError={(e) => {
+                console.error('Failed to load image:', popup.image);
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+
+            {/* File Info */}
+            <div className="mt-2 p-2 bg-gray-100 border border-gray-400 text-xs">
+              <div className="flex justify-between">
+                <span className="text-gray-700">FILE:</span>
+                <span className="text-black font-mono">{popup.title}</span>
+              </div>
+              <div className="flex justify-between mt-1">
+                <span className="text-gray-700">STATUS:</span>
+                <span className="text-red-600 font-bold">INFECTED WITH TALENT</span>
+              </div>
+            </div>
+
+            {/* Action Button */}
+            <div className="mt-3 flex justify-center">
+              <button 
+                onClick={() => window.location.href = '/contact'}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 text-xs font-bold border border-red-800 transition-all duration-200"
+                style={{ 
+                  fontFamily: '"MS Sans Serif", sans-serif',
+                  boxShadow: 'inset 1px 1px 0px rgba(255,255,255,0.3), inset -1px -1px 0px rgba(0,0,0,0.3)'
+                }}
+              >
+                ⚡ HIRE CREATOR
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 } 
