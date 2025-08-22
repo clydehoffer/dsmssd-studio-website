@@ -85,8 +85,8 @@ async function main() {
       console.log(`\n📁 Processing Gallery ${galleryId} (${images.length} images)...`);
       optimizedGalleryData[galleryId] = [];
       
-      // Process first 3 images from each gallery for speed
-      const imagesToProcess = images.slice(0, 3);
+      // Process first 8 images from each gallery for better variety
+      const imagesToProcess = images.slice(0, Math.min(8, images.length));
       
       for (let i = 0; i < imagesToProcess.length; i++) {
         const item = imagesToProcess[i];
