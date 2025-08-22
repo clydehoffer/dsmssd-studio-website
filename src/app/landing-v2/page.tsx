@@ -181,10 +181,7 @@ export default function LandingV2() {
     };
   }, []);
 
-  // Handle image preload completion
-  const handleImagesPreloaded = () => {
-    setImagesPreloaded(true);
-  };
+
 
   // Optional: check if user has seen the welcome animation recently
   useEffect(() => {
