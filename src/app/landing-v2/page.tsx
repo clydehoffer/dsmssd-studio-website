@@ -17,6 +17,7 @@ export default function LandingV2() {
   const [ambientPopups, setAmbientPopups] = useState<Array<{
     id: number;
     image: string;
+    original: string;
     title: string;
     x: number;
     y: number;
@@ -286,14 +287,16 @@ export default function LandingV2() {
     if (isMobile) return; // Skip popups on mobile
 
     const getRandomImage = () => {
-      const allImages: Array<{image: string, title: string, project: string}> = [];
+      const allImages: Array<{image: string, original: string, title: string, project: string}> = [];
       
       // Collect all images from gallery data with proper optimization
       Object.entries(galleryData).forEach(([projectId, images]) => {
         images.forEach((item, index) => {
           allImages.push({
-            // Use heavily optimized image: 400x300px, 60% quality, WebP format
-            image: optimizeSupabaseImage(item.original, 400, 300, 60),
+            // Use optimized thumbnail for popup (6KB vs 3MB!)
+            image: item.thumbnail,
+            // Keep original for lightbox
+            original: item.original,
             title: `${item.title || `Image ${index + 1}`}`,
             project: `Project ${projectId}`
           });
@@ -342,6 +345,7 @@ export default function LandingV2() {
           const newPopup = {
             id: popupId,
             image: randomImage.image,
+            original: randomImage.original,
             title: `${randomImage.project} - ${randomImage.title}`,
             x: position.x,
             y: position.y,
@@ -374,6 +378,7 @@ export default function LandingV2() {
           const newPopup = {
             id: popupId,
             image: randomImage.image,
+            original: randomImage.original,
             title: `${randomImage.project} - ${randomImage.title}`,
             x: position.x,
             y: position.y,
@@ -1012,21 +1017,36 @@ export default function LandingV2() {
               </div>
             </div>
 
-            {/* Image Display */}
-            <img 
-              src={popup.image} 
-              alt={popup.title}
-              className="w-full h-48 object-contain bg-black border border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
-              onClick={() => {
-                // For lightbox, use larger optimized version (1200px wide, higher quality)
-                const lightboxUrl = optimizeSupabaseImage(popup.image.split('?')[0], 1200, 800, 85);
-                setLightboxImage(lightboxUrl);
-              }}
-              onError={(e) => {
-                console.error('Failed to load image:', popup.image);
-                e.currentTarget.style.display = 'none';
-              }}
-            />
+            {/* Image Display with Loading State */}
+            <div className="relative w-full h-48 bg-black border border-gray-500">
+              <img 
+                src={popup.image} 
+                alt={popup.title}
+                className="absolute inset-0 w-full h-full object-contain cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
+                loading="eager"
+                onClick={() => {
+                  // For lightbox, use the full-resolution original
+                  setLightboxImage(popup.original);
+                }}
+                onLoad={(e) => {
+                  // Hide loading indicator when image loads
+                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator');
+                  if (loadingEl) loadingEl.style.display = 'none';
+                }}
+                onError={(e) => {
+                  console.error('Failed to load image:', popup.image);
+                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator');
+                  if (loadingEl) {
+                    loadingEl.textContent = 'Failed to load';
+                    loadingEl.className = 'loading-indicator absolute inset-0 flex items-center justify-center text-red-400 text-xs';
+                  }
+                }}
+              />
+              {/* Loading indicator */}
+              <div className="loading-indicator absolute inset-0 flex items-center justify-center text-gray-400 text-xs">
+                Loading...
+              </div>
+            </div>
 
             {/* File Info */}
             <div className="mt-2 p-2 bg-gray-100 border border-gray-400 text-xs">
