@@ -17,6 +17,18 @@ export default function ImagePreloader({ images, onLoadComplete }: ImagePreloade
       return;
     }
 
+    // Method 1: Browser-native preload via link tags (fastest)
+    const linkElements: HTMLLinkElement[] = [];
+    images.slice(0, 12).forEach(src => { // Only preload first 12 with link tags
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
+      linkElements.push(link);
+    });
+
+    // Method 2: JavaScript preload for the rest
     const preloadImage = (src: string) => {
       return new Promise<void>((resolve, reject) => {
         const img = new Image();
@@ -27,13 +39,29 @@ export default function ImagePreloader({ images, onLoadComplete }: ImagePreloade
           }
           resolve();
         };
-        img.onerror = reject;
+        img.onerror = () => {
+          // Don't fail completely if one image fails
+          loadedCount++;
+          if (loadedCount === totalImages) {
+            onLoadComplete?.();
+          }
+          resolve();
+        };
         img.src = src;
       });
     };
 
-    // Preload all images
+    // Start preloading
     images.forEach(preloadImage);
+
+    // Cleanup function
+    return () => {
+      linkElements.forEach(link => {
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      });
+    };
   }, [images, onLoadComplete]);
 
   return null; // This component doesn't render anything

@@ -30,9 +30,9 @@ export default function LandingV2() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
 
-  // Get all portfolio images for preloading
+  // Get the main images plus a few more from each portfolio for smarter preloading
   const portfolioImages = Object.values(galleryData).flatMap(galleryItems => 
-    galleryItems.map(item => item.original)
+    galleryItems.slice(0, 4).map(item => item.original) // First 4 from each (24 total)
   );
 
   // Function to check if two rectangles overlap
@@ -164,18 +164,16 @@ export default function LandingV2() {
   };
 
   useEffect(() => {
-    // Wait for both time and image preloading
+    // Always proceed after time, regardless of image preload status
     const timer = setTimeout(() => {
-      if (imagesPreloaded) {
-        setLoading(false);
-        setShowWelcome(true); // Show welcome animation after loading
-      }
+      setLoading(false);
+      setShowWelcome(true); // Show welcome animation after loading
     }, 2500); // Slightly longer to allow loading animation to complete
 
     return () => {
       clearTimeout(timer);
     };
-  }, [imagesPreloaded]);
+  }, []);
 
   // Handle image preload completion
   const handleImagesPreloaded = () => {
@@ -565,17 +563,11 @@ export default function LandingV2() {
                   {/* Full Portfolio Image with Retro CRT Frame - Clickable */}
                   <div className="border-4 border-gray-600 bg-black p-2 mb-4">
                     <div className="border-2 border-gray-400 bg-gray-800 p-1">
-                      <Image 
+                      <img 
                         src={popup.image} 
                         alt={popup.title}
-                        width={400}
-                        height={192}
                         className="w-full h-48 object-contain bg-black border border-gray-500 cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
                         onClick={() => setLightboxImage(popup.image)}
-                        priority={true}
-                        quality={85}
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                         }}
@@ -1048,15 +1040,11 @@ export default function LandingV2() {
             >
               <span className="text-white text-xl font-bold">×</span>
             </button>
-            <Image 
+            <img 
               src={lightboxImage} 
               alt="Portfolio lightbox view"
-              width={1200}
-              height={800}
               className="max-w-full max-h-full object-contain rounded-xl"
               onClick={(e) => e.stopPropagation()}
-              priority={true}
-              quality={95}
             />
             
             {/* Lightbox Info */}

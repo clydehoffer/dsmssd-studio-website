@@ -1,17 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaInstagram, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { name: 'Instagram', icon: <FaInstagram size={20} />, url: 'https://instagram.com' },
-    { name: 'Twitter', icon: <FaTwitter size={20} />, url: 'https://twitter.com' },
-    { name: 'LinkedIn', icon: <FaLinkedin size={20} />, url: 'https://linkedin.com' },
-    { name: 'YouTube', icon: <FaYoutube size={20} />, url: 'https://youtube.com' },
-  ];
+
 
   const footerLinks = [
     { name: 'Services', url: '/services' },
@@ -74,27 +69,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Social */}
+          {/* Contact */}
           <div>
             <h3 className="font-display text-xl font-bold text-white">Connect</h3>
             <p className="mt-4 text-gray-300">
-              Email: <a href="mailto:info@dsmssd.studio" className="text-accent">info@dsmssdstudio.com</a>
+              Email: <a href="mailto:info@dsmssdstudio.com" className="text-accent">info@dsmssdstudio.com</a>
             </p>
-            <div className="mt-6 flex space-x-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-accent"
-                  whileHover={{ y: -5 }}
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
           </div>
         </div>
 
