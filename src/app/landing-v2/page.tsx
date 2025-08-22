@@ -7,7 +7,7 @@ import WelcomeAnimation from '@/components/home/WelcomeAnimation';
 
 import { galleryData } from '@/data/galleryData';
 
-export default function LandingV2() {
+export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [showWelcome, setShowWelcome] = useState(false);
   const [activePopup, setActivePopup] = useState<string | null>(null);
