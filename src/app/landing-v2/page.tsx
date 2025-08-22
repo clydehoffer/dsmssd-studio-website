@@ -862,7 +862,7 @@ export default function LandingV2() {
                      <div key={itemIndex} className="bg-white/10 backdrop-blur-sm border border-white/20 p-2 rounded-lg cursor-pointer hover:bg-white/20 hover:border-white/30 transition-all duration-200">
                        <img 
                          src={item.thumbnail} 
-                         alt={item.originalAlt}
+                         alt={item.title}
                          className="w-full h-16 object-cover rounded-md"
                          onClick={() => {
                            // Open image in modal
