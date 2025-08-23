@@ -462,6 +462,41 @@ export default function HomePage() {
             background: linear-gradient(90deg, #ff0000 0%, #ff3333 50%, #ff0000 100%); 
           }
         }
+
+        @keyframes logoPulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+          }
+          50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+          }
+        }
+
+        @keyframes logoPulseMobile {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+          }
+          50% {
+            transform: scale(1.08);
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+          }
+        }
+
+        /* Mobile-specific improvements */
+        @media (max-width: 768px) {
+          .mobile-pulse-enhanced {
+            animation: logoPulseMobile 2.5s ease-in-out infinite !important;
+          }
+          
+          /* Ensure navigation text is readable on mobile */
+          .nav-tooltip {
+            font-size: 10px;
+            padding: 4px 8px;
+          }
+        }
       `}}/>
 
 
@@ -482,7 +517,7 @@ export default function HomePage() {
 
       {/* Content Overlay */}
       <div className="relative z-10 min-h-screen flex flex-col justify-center items-center text-white">
-        {showWelcome && <WelcomeAnimation />}
+      {showWelcome && <WelcomeAnimation />}
       </div>
 
 
@@ -504,8 +539,8 @@ export default function HomePage() {
                 </svg>
                 <div className="absolute inset-0 rounded-full bg-blue-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {/* Page Title Hover Animation */}
-                <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
-                  <span className="text-white text-xs font-medium whitespace-nowrap">Resume</span>
+                <div className="nav-tooltip absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-xl border-2 border-white/50 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 shadow-2xl z-[60]">
+                  <span className="text-white text-xs font-bold whitespace-nowrap drop-shadow-lg">Resume</span>
                 </div>
               </button>
             </div>
@@ -518,8 +553,8 @@ export default function HomePage() {
                 </svg>
                 <div className="absolute inset-0 rounded-full bg-purple-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {/* Page Title Hover Animation */}
-                <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
-                  <span className="text-white text-xs font-medium whitespace-nowrap">Portfolio</span>
+                <div className="nav-tooltip absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-xl border-2 border-white/50 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 shadow-2xl z-[60]">
+                  <span className="text-white text-xs font-bold whitespace-nowrap drop-shadow-lg">Portfolio</span>
               </div>
             </button>
             </div>
@@ -532,8 +567,8 @@ export default function HomePage() {
                 </svg>
                 <div className="absolute inset-0 rounded-full bg-yellow-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {/* Page Title Hover Animation */}
-                <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
-                  <span className="text-white text-xs font-medium whitespace-nowrap">About</span>
+                <div className="nav-tooltip absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-xl border-2 border-white/50 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 shadow-2xl z-[60]">
+                  <span className="text-white text-xs font-bold whitespace-nowrap drop-shadow-lg">About</span>
               </div>
             </button>
             </div>
@@ -546,8 +581,8 @@ export default function HomePage() {
                 </svg>
                 <div className="absolute inset-0 rounded-full bg-green-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {/* Page Title Hover Animation */}
-                <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
-                  <span className="text-white text-xs font-medium whitespace-nowrap">Services</span>
+                <div className="nav-tooltip absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-xl border-2 border-white/50 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 shadow-2xl z-[60]">
+                  <span className="text-white text-xs font-bold whitespace-nowrap drop-shadow-lg">Services</span>
               </div>
             </button>
             </div>
@@ -560,8 +595,8 @@ export default function HomePage() {
                 </svg>
                 <div className="absolute inset-0 rounded-full bg-red-400/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {/* Page Title Hover Animation */}
-                <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300">
-                  <span className="text-white text-xs font-medium whitespace-nowrap">Contact</span>
+                <div className="nav-tooltip absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-xl border-2 border-white/50 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 shadow-2xl z-[60]">
+                  <span className="text-white text-xs font-bold whitespace-nowrap drop-shadow-lg">Contact</span>
               </div>
             </button>
             </div>
@@ -573,6 +608,9 @@ export default function HomePage() {
         <button 
           onClick={() => setShowNavigation(!showNavigation)}
           className="group w-12 h-12 sm:w-16 sm:h-16 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:bg-white/20 transition-all duration-300 shadow-lg hover:shadow-white/30"
+          style={{ 
+            animation: showNavigation ? 'none' : window.innerWidth <= 768 ? 'logoPulseMobile 2.5s ease-in-out infinite' : 'logoPulse 3s ease-in-out infinite'
+          }}
           data-logo-nav
         >
           <Image 
@@ -588,8 +626,8 @@ export default function HomePage() {
           <div className="absolute inset-0 rounded-full bg-white/20 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
           
           {/* Hint text with glassmorphism */}
-          <div className="absolute -top-10 sm:-top-12 left-1/2 transform -translate-x-1/2 bg-white/15 backdrop-blur-xl border border-white/25 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300">
-            <span className="text-white text-xs font-medium whitespace-nowrap">Click to navigate</span>
+          <div className="nav-tooltip absolute -top-10 sm:-top-12 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-xl border-2 border-white/50 px-2 py-1 sm:px-3 sm:py-1 rounded-full opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300 shadow-2xl z-[60]">
+            <span className="text-white text-xs font-bold whitespace-nowrap drop-shadow-lg">Click to navigate</span>
         </div>
         </button>
       </div>
@@ -948,7 +986,7 @@ export default function HomePage() {
             left: `${popup.x}px`,
             top: `${popup.y}px`,
             width: '384px', // w-96
-            zIndex: 1000,
+            zIndex: 40,
             animation: 'virusPopupInstant 0.1s ease-out',
             fontFamily: '"MS Sans Serif", sans-serif',
             fontSize: '11px'

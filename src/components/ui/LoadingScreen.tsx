@@ -40,31 +40,84 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ duration = 2000 }) => {
 
   return (
     <div className="flex h-screen w-full items-center justify-center bg-white dark:bg-gray-900">
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes logoFloat {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes logoWiggle {
+          0%, 100% {
+            transform: translateX(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateX(3px) rotate(2deg);
+          }
+          75% {
+            transform: translateX(-3px) rotate(-2deg);
+          }
+        }
+
+        /* Mobile optimization for smoother animations */
+        @media (max-width: 768px) {
+          .logo-float-animation {
+            will-change: transform;
+            backface-visibility: hidden;
+          }
+          
+          @keyframes logoFloat {
+            0%, 100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-6px);
+            }
+          }
+
+          @keyframes logoWiggle {
+            0%, 100% {
+              transform: translateX(0px) rotate(0deg);
+            }
+            25% {
+              transform: translateX(2px) rotate(1deg);
+            }
+            75% {
+              transform: translateX(-2px) rotate(-1deg);
+            }
+          }
+        }
+      `}}/>
       <div className="flex flex-col items-center justify-center p-8 max-w-md w-full">
         <motion.div
           initial={{ y: -200, opacity: 0, scale: 0.3, rotate: -45 }}
           animate={{ 
-            y: 0, 
+            y: 0, // Initial position
             opacity: 1, 
             scale: 1, 
-            rotate: [0, 5, -5, 3, -3, 0],
+            rotate: 0,
           }}
           transition={{ 
             y: { duration: 0.8, ease: "easeOut", type: "spring", damping: 0.6 },
             opacity: { duration: 0.6 },
             scale: { duration: 0.8, ease: "backOut" },
-            rotate: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }
+            rotate: { duration: 0.8, ease: "easeOut" }
           }}
           className="mb-8"
+          style={{
+            // Force hardware acceleration on mobile for smoother animation
+            willChange: 'transform, opacity',
+            backfaceVisibility: 'hidden',
+            perspective: '1000px'
+          }}
         >
-          <motion.div
-            animate={{ 
-              y: [0, -4, 0],  // Float upward but only slightly to stay above text
-              x: [0, 2, -2, 0]
-            }}
-            transition={{
-              y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-              x: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }
+          <div
+            className="logo-float-animation"
+            style={{
+              animation: 'logoFloat 3s ease-in-out infinite 1s, logoWiggle 4s ease-in-out infinite 1.5s'
             }}
           >
             <Image 
@@ -74,10 +127,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ duration = 2000 }) => {
               height={100}
               className="drop-shadow-lg"
               style={{
-                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
+                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
+                // Optimize image rendering on mobile
+                imageRendering: 'optimizeQuality',
+                willChange: 'transform'
               }}
             />
-          </motion.div>
+          </div>
         </motion.div>
         
         <h1 className="font-display font-bold text-3xl text-gray-900 dark:text-white mb-4">
