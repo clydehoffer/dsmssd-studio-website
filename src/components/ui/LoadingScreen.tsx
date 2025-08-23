@@ -128,8 +128,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ duration = 2000 }) => {
               className="drop-shadow-lg"
               style={{
                 filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))',
-                // Optimize image rendering on mobile
-                imageRendering: 'optimizeQuality',
                 willChange: 'transform'
               }}
             />
