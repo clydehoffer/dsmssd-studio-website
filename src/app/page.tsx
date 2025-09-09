@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import WelcomeAnimation from '@/components/home/WelcomeAnimation';
+import CursorSparkles from '@/components/ui/CursorSparkles';
 
 import { galleryData } from '@/data/galleryData';
 
@@ -14,15 +15,6 @@ export default function HomePage() {
   const [openProjectWindows, setOpenProjectWindows] = useState<number[]>([]);
   const [enlargedImage, setEnlargedImage] = useState<string | null>(null);
   const [showNavigation, setShowNavigation] = useState(false);
-  const [ambientPopups, setAmbientPopups] = useState<Array<{
-    id: number;
-    image: string;
-    original: string;
-    title: string;
-    x: number;
-    y: number;
-    visible: boolean;
-  }>>([]);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [windowPositions, setWindowPositions] = useState<Record<number, { x: number; y: number; width: number; height: number }>>({});
   const [draggedWindow, setDraggedWindow] = useState<number | null>(null);
@@ -30,144 +22,6 @@ export default function HomePage() {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
 
-  // Helper function to optimize Supabase images for faster loading
-  const optimizeSupabaseImage = (url: string, width: number = 400, height: number = 300, quality: number = 60) => {
-    if (!url.includes('supabase.co')) return url;
-    
-    // Remove existing query parameters
-    const baseUrl = url.split('?')[0];
-    
-    // Add Supabase image transformation parameters for much smaller file sizes
-    return `${baseUrl}?width=${width}&height=${height}&resize=contain&quality=${quality}&format=webp`;
-  };
-
-  // Function to check if two rectangles overlap
-  const doRectanglesOverlap = (rect1: { x: number; y: number; width: number; height: number }, 
-                              rect2: { x: number; y: number; width: number; height: number }) => {
-    return !(rect1.x + rect1.width < rect2.x || 
-             rect2.x + rect2.width < rect1.x || 
-             rect1.y + rect1.height < rect2.y || 
-             rect2.y + rect2.height < rect1.y);
-  };
-
-  // Function to find non-overlapping position with TRUE full-page distribution
-  const findNonOverlappingPosition = (index: number, existingPositions: Record<number, { x: number; y: number; width: number; height: number }>) => {
-    const windowSizes = [
-      { width: 280, height: 240 },
-      { width: 320, height: 280 },
-      { width: 300, height: 260 },
-      { width: 340, height: 300 },
-      { width: 260, height: 220 },
-      { width: 360, height: 320 }
-    ];
-    
-    const size = windowSizes[index % windowSizes.length];
-    
-    // Try positions across the full page until we find one that doesn't overlap
-    const positions = [
-      // TOP ROW - Full width spread
-      { x: 50, y: 50 },
-      { x: 400, y: 60 },
-      { x: 800, y: 40 },
-      { x: 1200, y: 80 },
-      { x: 1600, y: 70 },
-      
-      // MIDDLE ROW - Full width spread
-      { x: 100, y: 200 },
-      { x: 450, y: 220 },
-      { x: 850, y: 180 },
-      { x: 1250, y: 200 },
-      { x: 1650, y: 190 },
-      
-      // BOTTOM ROW - Full width spread (above navbar)
-      { x: 80, y: 380 },
-      { x: 420, y: 360 },
-      { x: 780, y: 400 },
-      { x: 1180, y: 380 },
-      { x: 1580, y: 390 },
-      
-      // ADDITIONAL POSITIONS for better distribution
-      { x: 200, y: 100 },
-      { x: 600, y: 120 },
-      { x: 1000, y: 110 },
-      { x: 1400, y: 130 },
-      { x: 1800, y: 140 },
-      
-      { x: 150, y: 300 },
-      { x: 550, y: 320 },
-      { x: 950, y: 310 },
-      { x: 1350, y: 330 },
-      { x: 1750, y: 340 }
-    ];
-    
-    // Try each position until we find one that doesn't overlap
-    for (let i = 0; i < positions.length; i++) {
-      const position = positions[i];
-      const newRect = {
-        x: position.x,
-        y: position.y,
-        width: size.width,
-        height: size.height
-      };
-      
-      // Check if this position overlaps with any existing windows
-      let overlaps = false;
-      for (const existingRect of Object.values(existingPositions)) {
-        if (doRectanglesOverlap(newRect, existingRect)) {
-          overlaps = true;
-          break;
-        }
-      }
-      
-      if (!overlaps) {
-        return newRect;
-      }
-    }
-    
-    // If all positions overlap, find a random position that doesn't overlap
-    let attempts = 0;
-    const maxAttempts = 100;
-    
-    // Landing page constraints (above navbar, within viewport)
-    const landingPageWidth = 1920; // Standard desktop width
-    const landingPageHeight = 800; // Height above navbar
-    const navbarHeight = 100; // Space for navbar
-    
-    while (attempts < maxAttempts) {
-      const randomX = Math.floor(Math.random() * (landingPageWidth - size.width - 100)) + 50;
-      const randomY = Math.floor(Math.random() * (landingPageHeight - size.height - 50)) + 50;
-      
-      const newRect = {
-        x: randomX,
-        y: randomY,
-        width: size.width,
-        height: size.height
-      };
-      
-      let overlaps = false;
-      for (const existingRect of Object.values(existingPositions)) {
-        if (doRectanglesOverlap(newRect, existingRect)) {
-          overlaps = true;
-          break;
-        }
-      }
-      
-      if (!overlaps) {
-        return newRect;
-      }
-      
-      attempts++;
-    }
-    
-    // Last resort: stack them vertically with spacing
-    const fallbackY = 50 + (index * (size.height + 50));
-    return {
-      x: 50 + (index * 50),
-      y: fallbackY,
-      width: size.width,
-      height: size.height
-    };
-  };
 
   useEffect(() => {
     // Always proceed after time, regardless of image preload status
@@ -275,130 +129,6 @@ export default function HomePage() {
     }
   }, [showNavigation]);
 
-  // Ambient Portfolio Popup System (Desktop Only)
-  useEffect(() => {
-    if (loading) return;
-    
-    // Check if device is mobile
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) return; // Skip popups on mobile
-
-    const getRandomImage = () => {
-      const allImages: Array<{image: string, original: string, title: string, project: string}> = [];
-      
-      // Collect all images from gallery data with proper optimization
-      Object.entries(galleryData).forEach(([projectId, images]) => {
-        images.forEach((item, index) => {
-          allImages.push({
-            // Use optimized thumbnail for popup (6KB vs 3MB!)
-            image: item.thumbnail,
-            // Keep original for lightbox
-            original: item.original,
-            title: `${item.title || `Image ${index + 1}`}`,
-            project: `Project ${projectId}`
-          });
-        });
-      });
-
-      return allImages[Math.floor(Math.random() * allImages.length)];
-    };
-
-    const getRandomPosition = () => {
-      const popupWidth = 384; // w-96 = 384px
-      const popupHeight = 400; // Estimated popup height
-      const margin = 20; // Small margin from edges
-      const logoZone = 200; // Avoid logo area at bottom
-      
-      // Calculate safe area bounds
-      const maxX = window.innerWidth - popupWidth - margin;
-      const maxY = window.innerHeight - popupHeight - logoZone;
-      
-      let x, y;
-      do {
-        x = Math.random() * (maxX - margin) + margin;
-        y = Math.random() * (maxY - margin) + margin;
-      } while (
-        // Avoid bottom center logo area (wider zone)
-        x > window.innerWidth / 2 - 400 &&
-        x < window.innerWidth / 2 + 400 &&
-        y > window.innerHeight - logoZone - 50
-      );
-      
-      // Ensure popup stays within viewport
-      x = Math.max(margin, Math.min(maxX, x));
-      y = Math.max(margin, Math.min(maxY, y));
-      
-      return { x, y };
-    };
-
-    // Create multiple initial popups quickly to ensure overlap
-    const createMultiplePopups = () => {
-      for (let i = 0; i < 2; i++) {
-        setTimeout(() => {
-          const randomImage = getRandomImage();
-          const position = getRandomPosition();
-          const popupId = Date.now() + i; // Ensure unique IDs
-
-          const newPopup = {
-            id: popupId,
-            image: randomImage.image,
-            original: randomImage.original,
-            title: `${randomImage.project} - ${randomImage.title}`,
-            x: position.x,
-            y: position.y,
-            visible: true
-          };
-
-          setAmbientPopups(prev => [...prev, newPopup]);
-
-          // Auto-remove after 6-10 seconds (longer duration) - INSTANT removal
-          const displayTime = 6000 + Math.random() * 4000;
-          setTimeout(() => {
-            setAmbientPopups(current => current.filter(p => p.id !== popupId));
-          }, displayTime);
-        }, i * 1000); // Stagger by 1 second
-      }
-    };
-
-    // Start creating popups after welcome animation
-    const initialDelay = setTimeout(createMultiplePopups, 5000);
-
-    // Create new popups every 2-4 seconds (faster intervals)
-    const interval = setInterval(() => {
-      // Limit to max 4 popups at once
-      setAmbientPopups(prev => {
-        if (prev.length < 4) {
-          const randomImage = getRandomImage();
-          const position = getRandomPosition();
-          const popupId = Date.now();
-
-          const newPopup = {
-            id: popupId,
-            image: randomImage.image,
-            original: randomImage.original,
-            title: `${randomImage.project} - ${randomImage.title}`,
-            x: position.x,
-            y: position.y,
-            visible: true
-          };
-
-          // Auto-remove after 6-10 seconds (longer duration for overlap) - INSTANT removal
-          const displayTime = 6000 + Math.random() * 4000;
-          setTimeout(() => {
-            setAmbientPopups(current => current.filter(p => p.id !== popupId));
-          }, displayTime);
-
-          return [...prev, newPopup];
-        }
-        return prev;
-      });
-    }, 2000 + Math.random() * 2000); // Much faster intervals
-
-    return () => {
-      clearTimeout(initialDelay);
-      clearInterval(interval);
-    };
-  }, [loading]);
 
   // Keyboard support for lightbox
   useEffect(() => {
@@ -426,6 +156,8 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {/* Silver Sparkle Cursor Trail */}
+      <CursorSparkles />
       {/* CSS Animation Styles */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes iconSlideIn {
@@ -443,25 +175,6 @@ export default function HomePage() {
           }
         }
 
-        @keyframes virusPopupInstant {
-          0% {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes virusPopupBlink {
-          0%, 50% { 
-            background: linear-gradient(90deg, #0053d4 0%, #0066ff 50%, #0053d4 100%); 
-          }
-          50.1%, 100% { 
-            background: linear-gradient(90deg, #ff0000 0%, #ff3333 50%, #ff0000 100%); 
-          }
-        }
 
         @keyframes logoPulse {
           0%, 100% {
@@ -977,140 +690,6 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Virus-style Ambient Popups */}
-      {ambientPopups.map((popup) => (
-        <div
-          key={popup.id}
-          className="fixed bg-gray-200 border-2 border-gray-400 shadow-xl"
-          style={{
-            left: `${popup.x}px`,
-            top: `${popup.y}px`,
-            width: '384px', // w-96
-            zIndex: 40,
-            animation: 'virusPopupInstant 0.1s ease-out',
-            fontFamily: '"MS Sans Serif", sans-serif',
-            fontSize: '11px'
-          }}
-        >
-          {/* Title Bar with Blinking Effect */}
-          <div 
-            className="bg-blue-600 text-white px-2 py-1 flex justify-between items-center border-b border-gray-400"
-            style={{ 
-              background: 'linear-gradient(90deg, #0053d4 0%, #0066ff 50%, #0053d4 100%)',
-              animation: 'virusPopupBlink 2s infinite'
-            }}
-          >
-            <div className="flex items-center space-x-2">
-              <span className="text-yellow-300 text-sm">⚠️</span>
-              <span className="font-bold text-xs">
-                {popup.title.includes('Project 1') ? 'SYSTEM ERROR' :
-                 popup.title.includes('Project 2') ? 'VIRUS DETECTED' :
-                 popup.title.includes('Project 3') ? 'SECURITY ALERT' :
-                 popup.title.includes('Project 4') ? 'WARNING' :
-                 popup.title.includes('Project 5') ? 'CRITICAL ERROR' :
-                 popup.title.includes('Project 6') ? 'MALWARE ALERT' : 'SYSTEM NOTIFICATION'}
-              </span>
-            </div>
-            <button 
-              onClick={() => setAmbientPopups(prev => prev.filter(p => p.id !== popup.id))}
-              className="text-white hover:bg-red-500 w-4 h-4 flex items-center justify-center text-xs font-bold"
-            >
-              ×
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="p-3 bg-gray-200">
-            <div className="flex items-start space-x-3">
-              <div className="flex-shrink-0">
-                <span className="text-2xl">
-                  {popup.title.includes('Project 1') ? '⚠️' :
-                   popup.title.includes('Project 2') ? '🔥' :
-                   popup.title.includes('Project 3') ? '🚨' :
-                   popup.title.includes('Project 4') ? '⚡' :
-                   popup.title.includes('Project 5') ? '💀' :
-                   popup.title.includes('Project 6') ? '👁️' : '🔔'}
-                </span>
-              </div>
-              <div className="flex-1">
-                <div className="text-black text-xs font-bold mb-1">
-                  {popup.title.includes('Project 1') ? 'Creative.exe has exceeded expectations!' :
-                   popup.title.includes('Project 2') ? 'Unauthorized talent infiltration!' :
-                   popup.title.includes('Project 3') ? 'Suspicious activity detected!' :
-                   popup.title.includes('Project 4') ? 'Dangerous levels of creativity detected!' :
-                   popup.title.includes('Project 5') ? 'Fatal attraction to design!' :
-                   popup.title.includes('Project 6') ? 'Malicious amounts of skill found!' : 'Creative overflow detected!'}
-                </div>
-                <div className="text-gray-600 text-xs mb-2">
-                  {popup.title.includes('Project 1') ? 'File corrupted with pure talent.' :
-                   popup.title.includes('Project 2') ? 'Portfolio quality exceeds system limits.' :
-                   popup.title.includes('Project 3') ? 'Recommend immediate portfolio viewing.' :
-                   popup.title.includes('Project 4') ? 'This creativity may cause inspiration overflow.' :
-                   popup.title.includes('Project 5') ? 'Warning: Viewing may result in amazement.' :
-                   popup.title.includes('Project 6') ? 'Skill level detected: LEGENDARY.' : 'Viewing recommended immediately.'}
-                </div>
-              </div>
-            </div>
-
-            {/* Image Display with Loading State */}
-            <div className="relative w-full h-48 bg-black border border-gray-500">
-              <img 
-                src={popup.image} 
-                alt={popup.title}
-                className="absolute inset-0 w-full h-full object-contain cursor-pointer hover:brightness-110 transition-all duration-200 pointer-events-auto"
-                loading="eager"
-                onClick={() => {
-                  // For lightbox, use the full-resolution original
-                  setLightboxImage(popup.original);
-                }}
-                onLoad={(e) => {
-                  // Hide loading indicator when image loads
-                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator') as HTMLElement;
-                  if (loadingEl) loadingEl.style.display = 'none';
-                }}
-                onError={(e) => {
-                  console.error('Failed to load image:', popup.image);
-                  const loadingEl = e.currentTarget.parentElement?.querySelector('.loading-indicator') as HTMLElement;
-                  if (loadingEl) {
-                    loadingEl.textContent = 'Failed to load';
-                    loadingEl.className = 'loading-indicator absolute inset-0 flex items-center justify-center text-red-400 text-xs';
-                  }
-                }}
-              />
-              {/* Loading indicator */}
-              <div className="loading-indicator absolute inset-0 flex items-center justify-center text-gray-400 text-xs">
-                Loading...
-              </div>
-            </div>
-
-            {/* File Info */}
-            <div className="mt-2 p-2 bg-gray-100 border border-gray-400 text-xs">
-              <div className="flex justify-between">
-                <span className="text-gray-700">FILE:</span>
-                <span className="text-black font-mono">{popup.title}</span>
-              </div>
-              <div className="flex justify-between mt-1">
-                <span className="text-gray-700">STATUS:</span>
-                <span className="text-red-600 font-bold">INFECTED WITH TALENT</span>
-              </div>
-            </div>
-
-            {/* Action Button */}
-            <div className="mt-3 flex justify-center">
-              <button 
-                onClick={() => window.location.href = '/contact'}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 text-xs font-bold border border-red-800 transition-all duration-200"
-                style={{ 
-                  fontFamily: '"MS Sans Serif", sans-serif',
-                  boxShadow: 'inset 1px 1px 0px rgba(255,255,255,0.3), inset -1px -1px 0px rgba(0,0,0,0.3)'
-                }}
-              >
-                ⚡ HIRE CREATOR
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 } 

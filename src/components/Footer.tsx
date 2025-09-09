@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Logo and Description */}
           <div>
-            <a href="/landing-v2">
+            <a href="/">
               <img 
                 src="/images/logo/logo mark.svg" 
                 alt="DSMSSD STUDIO" 

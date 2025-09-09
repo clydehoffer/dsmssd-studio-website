@@ -64,7 +64,7 @@ export default function Navbar() {
       >
         <div className="responsive-container mx-auto flex items-center justify-between px-4 py-4 3xl:py-5 4xl:py-6">
           {/* Logo */}
-          <Link href="/landing-v2" className="z-10">
+          <Link href="/" className="z-10">
             <div className="relative h-10 w-10 sm:h-12 sm:w-12 3xl:h-14 3xl:w-14">
               <img 
                 src="/images/logo/logo mark.svg" 
