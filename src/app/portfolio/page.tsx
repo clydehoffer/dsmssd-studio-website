@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import ImageWithFallback from '../../components/ui/ImageWithFallback';
 
 // Portfolio categories
-const categories = ['All', 'Design', 'Production', 'Experiential', 'Fashion'];
+const categories = ['All', 'Design', 'Video Production', 'Photography'];
 
 // Portfolio projects - Updated to use local images from Google Drive with fallbacks
 const projects = [
@@ -37,8 +37,8 @@ const projects = [
   },
   {
     id: '4',
-    title: 'Music Video Production',
-    category: 'Production',
+    title: 'Mees!: "Without You" - Music Video Production',
+    category: 'Video Production',
     image: '/images/portfolio/4/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2670&auto=format&fit=crop',
     description: 'Creative direction, cinematography, and post-production for music video projects.',
@@ -54,10 +54,42 @@ const projects = [
   {
     id: '6',
     title: 'Real Estate & Location Photography',
-    category: 'Production',
+    category: 'Photography',
     image: '/images/portfolio/6/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
     description: 'Professional real estate photography, architectural documentation, and location shoots.',
+  },
+  {
+    id: '7',
+    title: 'Find Peace. Keep Peace. Publication Launch',
+    category: 'Photography',
+    image: '/images/portfolio/6/main.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
+    description: 'Photography capturing the launch event for the “Find Peace. Keep Peace.” publication.',
+  },
+  {
+    id: '8',
+    title: 'Academy Group: 2 Year Anniversary Celebration',
+    category: 'Photography',
+    image: '/images/portfolio/6/main.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
+    description: 'Event photography capturing the Academy Group’s 2-year anniversary celebration.',
+  },
+  {
+    id: '9',
+    title: 'California State University, Los Angeles: LA28 Olympic Marketing Reel',
+    category: 'Video Production',
+    image: '/images/portfolio/6/main.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
+    description: 'Creative direction, filming, and post-production for CSULA’s LA28 Olympic marketing reel.',
+  },
+  {
+    id: '10',
+    title: 'Leigh: "Hideaway" - Music Video Production',
+    category: 'Video Production',
+    image: '/images/portfolio/6/main.jpg',
+    fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
+    description: 'Creative development, visual production, and post-editing for music video projects.',
   },
 ];
 
