@@ -87,7 +87,7 @@ const projects = [
     id: '10',
     title: 'Leigh: "Hideaway" - Music Video Production',
     category: 'Video Production',
-    image: '/images/portfolio/6/main.jpg',
+    image: '/images/portfolio/10/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
     description: 'Creative development, visual production, and post-editing for music video projects.',
   },

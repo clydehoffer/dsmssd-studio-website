@@ -486,5 +486,61 @@ export const galleryData: GalleryData = {
       "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 5",
       "description": "Behind the scenes screenshot from CSULA LA28 Olympic marketing reel production"
     }
+  ],
+  "10": [
+    {
+      "original": "/images/portfolio/10/screenshot-1.png",
+      "thumbnail": "/images/portfolio/10/screenshot-1.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 1",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-2.png",
+      "thumbnail": "/images/portfolio/10/screenshot-2.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 2",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-3.png",
+      "thumbnail": "/images/portfolio/10/screenshot-3.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 3",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-4.png",
+      "thumbnail": "/images/portfolio/10/screenshot-4.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 4",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-5.png",
+      "thumbnail": "/images/portfolio/10/screenshot-5.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 5",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-6.png",
+      "thumbnail": "/images/portfolio/10/screenshot-6.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 6",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-7.png",
+      "thumbnail": "/images/portfolio/10/screenshot-7.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 7",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-8.png",
+      "thumbnail": "/images/portfolio/10/screenshot-8.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 8",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    },
+    {
+      "original": "/images/portfolio/10/screenshot-9.png",
+      "thumbnail": "/images/portfolio/10/screenshot-9.png",
+      "title": "Leigh: \"Hideaway\" - Music Video Production - Screenshot 9",
+      "description": "Behind the scenes screenshot from Leigh \"Hideaway\" music video production"
+    }
   ]
 };

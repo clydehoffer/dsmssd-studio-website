@@ -138,7 +138,7 @@ const projects = [
     title: 'Leigh: Hideaway - Music Video Production',
     category: 'Video Production',
     client: 'Leigh',
-    image: '/images/portfolio/6/main.jpg',
+    image: '/images/portfolio/10/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
     description: 'Creative development, visual production, and post-editing for music video projects.',
     fullDescription: `We collaborated with artist Leigh to create the music video for “Hideaway,” crafting a visual world that reflects the emotion, mood, and narrative of the track. From concept development to final color grade, the production focused on delivering a cinematic experience that elevates the song’s atmosphere.`,
