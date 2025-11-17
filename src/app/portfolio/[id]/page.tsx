@@ -64,7 +64,7 @@ const projects = [
     challenge: `The creative direction needed to match Mees!'s energetic performance and genre-blending sound while delivering high visual quality within a tight production window. With limited shoot days and multiple location setups, every shot had to deliver impact.`,
     solution: `We leaned into bold lighting, expressive motion, and intuitive handheld tracking to create a dynamic visual world. By pairing natural scenery with stylized effects and color treatments, the final product evokes both cinematic clarity and street-level energy. The use of vibrant lighting transitions and fluid edits amplified the track's emotional momentum from start to finish.`,
     results: `The video premiered on YouTube and instantly added to Mees!'s growing traction as an emerging artist. "Without You" has helped solidify his visual brand and received strong fan and industry response—marking another successful collaboration between our team and Nashbrowin.`,
-    videoUrl: 'https://www.youtube.com/embed/4zQwC9YK-Zk',
+    videoUrl: '/videos/mees-without-you-music-video.mp4',
     videoEmbed: 'https://www.youtube.com/embed/4zQwC9YK-Zk',
   },
   {
@@ -134,7 +134,7 @@ const projects = [
     challenge: `The challenge centered on creating a compelling narrative that authentically represented CSULA's diverse community while aligning with the broader excitement surrounding LA28. Limited shoot windows and the need to film across multiple campus locations required efficient planning and unified creative direction.`,
     solution: `We developed a visual concept rooted in movement, pride, and momentum—capturing student life, athletics, campus landmarks, and candid moments that speak to the university's Olympic-era identity. A combination of stabilized motion shots, energetic editing, and bold graphics reinforced the LA28 aesthetic. Post-production focused on pacing, color grading, and integrating branded elements for a polished final cut.`,
     results: `The final marketing reel delivered a spirited, visually striking showcase of CSULA's role in the lead-up to LA28. The piece strengthened campus-wide promotional efforts, increased engagement across social platforms, and provided versatile content for use in university marketing, events, and Olympic-related outreach.`,
-    videoUrl: '/videos/csula-la28-marketing-reel.mp4',
+    videoUrl: 'https://www.youtube.com/embed/wkP_d1bDn0s',
   },
   {
     id: '10',
@@ -148,7 +148,7 @@ const projects = [
     challenge: `The primary challenge was translating the intimate, introspective tone of “Hideaway” into visuals that felt both expressive and cohesive. With limited locations and a tight production schedule, every shot needed to carry emotional weight while maintaining a strong visual identity.`,
     solution: `We developed a focused creative direction built around movement, natural textures, and selective lighting to mirror the song’s themes. A nimble production approach allowed us to capture both planned scenes and spontaneous moments. In post-production, careful pacing, color grading, and atmospheric overlays brought the narrative and performance elements together.`,
     results: `The final video delivered a polished, story-driven visual that resonated with Leigh's audience and strengthened her artistic brand. It provided versatile promotional content for social media, streaming platforms, and press coverage—helping expand the reach of the single and establishing a strong foundation for future creative collaborations.`,
-    videoUrl: '/videos/leigh-hideaway-music-video.mp4',
+    videoUrl: 'https://www.youtube.com/embed/5eQOLgT9m0o',
   },
 ];
 
