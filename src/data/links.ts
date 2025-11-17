@@ -118,7 +118,7 @@ export const skillsLinks: Link[] = [
   {
     id: 'skills-other',
     title: 'Additional Skills',
-    description: 'AI Learning & Training, Basic SQL, Photography, Content Creation, Project Management',
+    description: 'AI Learning & Training, SQL, Photography, Content Creation, Project Management',
     isUser: false,
   },
 ]; 
