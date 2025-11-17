@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import ImageWithFallback from '../../components/ui/ImageWithFallback';
 
 // Portfolio categories
-const categories = ['All', 'Design', 'Video Production', 'Photography'];
+const categories = ['All', 'Photography', 'Video Production', 'Design'];
 
 // Portfolio projects - Updated to use local images from Google Drive with fallbacks
 const projects = [
