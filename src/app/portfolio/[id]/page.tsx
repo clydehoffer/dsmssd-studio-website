@@ -64,6 +64,7 @@ const projects = [
     challenge: `The creative direction needed to match Mees!'s energetic performance and genre-blending sound while delivering high visual quality within a tight production window. With limited shoot days and multiple location setups, every shot had to deliver impact.`,
     solution: `We leaned into bold lighting, expressive motion, and intuitive handheld tracking to create a dynamic visual world. By pairing natural scenery with stylized effects and color treatments, the final product evokes both cinematic clarity and street-level energy. The use of vibrant lighting transitions and fluid edits amplified the track's emotional momentum from start to finish.`,
     results: `The video premiered on YouTube and instantly added to Mees!'s growing traction as an emerging artist. "Without You" has helped solidify his visual brand and received strong fan and industry response—marking another successful collaboration between our team and Nashbrowin.`,
+    videoUrl: '/videos/mees-without-you-music-video.mp4',
     videoEmbed: 'https://www.youtube.com/embed/4zQwC9YK-Zk',
   },
   {
@@ -146,7 +147,8 @@ const projects = [
     fullDescription: `We collaborated with artist Leigh to create the music video for “Hideaway,” crafting a visual world that reflects the emotion, mood, and narrative of the track. From concept development to final color grade, the production focused on delivering a cinematic experience that elevates the song’s atmosphere.`,
     challenge: `The primary challenge was translating the intimate, introspective tone of “Hideaway” into visuals that felt both expressive and cohesive. With limited locations and a tight production schedule, every shot needed to carry emotional weight while maintaining a strong visual identity.`,
     solution: `We developed a focused creative direction built around movement, natural textures, and selective lighting to mirror the song’s themes. A nimble production approach allowed us to capture both planned scenes and spontaneous moments. In post-production, careful pacing, color grading, and atmospheric overlays brought the narrative and performance elements together.`,
-    results: `The final video delivered a polished, story-driven visual that resonated with Leigh’s audience and strengthened her artistic brand. It provided versatile promotional content for social media, streaming platforms, and press coverage—helping expand the reach of the single and establishing a strong foundation for future creative collaborations.`,
+    results: `The final video delivered a polished, story-driven visual that resonated with Leigh's audience and strengthened her artistic brand. It provided versatile promotional content for social media, streaming platforms, and press coverage—helping expand the reach of the single and establishing a strong foundation for future creative collaborations.`,
+    videoUrl: '/videos/leigh-hideaway-music-video.mp4',
   },
 ];
 
