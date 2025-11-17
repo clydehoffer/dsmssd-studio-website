@@ -83,6 +83,8 @@ export default function VideoLightbox({
     }
   };
 
+  const isYouTube = videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be');
+
   if (!isOpen) return null;
 
   return (
@@ -123,7 +125,7 @@ export default function VideoLightbox({
 
           {/* Video Container */}
           <div className="relative aspect-video bg-black">
-            {videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be') ? (
+            {isYouTube ? (
               <iframe
                 src={videoUrl}
                 className="w-full h-full"
@@ -144,62 +146,64 @@ export default function VideoLightbox({
             )}
 
             {/* Custom Controls Overlay - Only show for non-YouTube videos */}
-            {!videoUrl.includes('youtube.com') && !videoUrl.includes('youtu.be') && (
+            {!isYouTube && (
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                 <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  {/* Play/Pause Button */}
-                  <button
-                    onClick={togglePlay}
-                    className="p-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
-                    aria-label={isPlaying ? 'Pause' : 'Play'}
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-6 h-6 text-white" />
-                    ) : (
-                      <Play className="w-6 h-6 text-white ml-1" />
-                    )}
-                  </button>
+                  <div className="flex items-center space-x-4">
+                    {/* Play/Pause Button */}
+                    <button
+                      onClick={togglePlay}
+                      className="p-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
+                      aria-label={isPlaying ? 'Pause' : 'Play'}
+                    >
+                      {isPlaying ? (
+                        <Pause className="w-6 h-6 text-white" />
+                      ) : (
+                        <Play className="w-6 h-6 text-white ml-1" />
+                      )}
+                    </button>
 
-                  {/* Mute Button */}
-                  <button
-                    onClick={toggleMute}
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                    aria-label={isMuted ? 'Unmute' : 'Mute'}
-                  >
-                    {isMuted ? (
-                      <VolumeX className="w-5 h-5 text-white" />
-                    ) : (
-                      <Volume2 className="w-5 h-5 text-white" />
-                    )}
-                  </button>
-                </div>
+                    {/* Mute Button */}
+                    <button
+                      onClick={toggleMute}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                      aria-label={isMuted ? 'Unmute' : 'Mute'}
+                    >
+                      {isMuted ? (
+                        <VolumeX className="w-5 h-5 text-white" />
+                      ) : (
+                        <Volume2 className="w-5 h-5 text-white" />
+                      )}
+                    </button>
+                  </div>
 
-                <div className="flex items-center space-x-2">
-                  {/* Fullscreen Button */}
-                  <button
-                    onClick={toggleFullscreen}
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                    aria-label={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
-                  >
-                    {isFullscreen ? (
-                      <Minimize className="w-5 h-5 text-white" />
-                    ) : (
-                      <Maximize className="w-5 h-5 text-white" />
-                    )}
-                  </button>
+                  <div className="flex items-center space-x-2">
+                    {/* Fullscreen Button */}
+                    <button
+                      onClick={toggleFullscreen}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                      aria-label={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+                    >
+                      {isFullscreen ? (
+                        <Minimize className="w-5 h-5 text-white" />
+                      ) : (
+                        <Maximize className="w-5 h-5 text-white" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
 
-            {/* Loading State */}
-            {!videoUrl.includes('youtube.com') && !videoUrl.includes('youtu.be') && !videoElement && (
+            {/* Loading State - Only show for non-YouTube videos */}
+            {!isYouTube && !videoElement && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
               </div>
             )}
           </div>
         </motion.div>
+      </motion.div>
     </AnimatePresence>
   );
 }
