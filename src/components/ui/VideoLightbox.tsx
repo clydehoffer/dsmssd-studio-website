@@ -191,17 +191,15 @@ export default function VideoLightbox({
                 </div>
               </div>
             )}
-          </div>
 
             {/* Loading State */}
-            {!videoElement && (
+            {!videoUrl.includes('youtube.com') && !videoUrl.includes('youtu.be') && !videoElement && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
               </div>
             )}
           </div>
         </motion.div>
-      </motion.div>
     </AnimatePresence>
   );
 }
