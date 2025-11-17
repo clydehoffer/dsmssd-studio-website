@@ -240,5 +240,165 @@ export const galleryData: GalleryData = {
       "title": "Lifestyle & Commercial Photography - Image 8",
       "description": "Portfolio piece from Lifestyle & Commercial Photography collection"
     }
+  ],
+  "7": [
+    {
+      "original": "/images/portfolio/7/DSC05100.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05100.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 1",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05148.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05148.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 2",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05180.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05180.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 3",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05248.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05248.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 4",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05289.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05289.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 5",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05291.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05291.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 6",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05295-Enhanced-NR.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05295-Enhanced-NR.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 7",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05310.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05310.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 8",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05331.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05331.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 9",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    },
+    {
+      "original": "/images/portfolio/7/DSC05341.jpg",
+      "thumbnail": "/images/portfolio/7/DSC05341.jpg",
+      "title": "Find Peace. Keep Peace. Publication Launch - Image 10",
+      "description": "Portfolio piece from Find Peace. Keep Peace. Publication Launch collection"
+    }
+  ],
+  "8": [
+    {
+      "original": "/images/portfolio/8/DSC04512.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04512.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 1",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04516.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04516.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 2",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04520.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04520.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 3",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04522.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04522.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 4",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04523.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04523.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 5",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04562.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04562.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 6",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04565.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04565.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 7",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04567.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04567.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 8",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04581.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04581.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 9",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04584.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04584.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 10",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04597.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04597.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 11",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04727.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04727.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 12",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04728.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04728.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 13",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04746.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04746.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 14",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04747.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04747.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 15",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    },
+    {
+      "original": "/images/portfolio/8/DSC04805.jpg",
+      "thumbnail": "/images/portfolio/8/DSC04805.jpg",
+      "title": "Academy Group: 2 Year Anniversary Celebration - Image 16",
+      "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
+    }
   ]
 };
