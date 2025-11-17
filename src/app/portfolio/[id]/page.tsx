@@ -125,7 +125,7 @@ const projects = [
     category: 'Video Production',
     client: 'California State University, Los Angeles',
     year: '2025',
-    image: '/images/portfolio/6/main.jpg',
+    image: '/images/portfolio/9/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
     description: 'Creative direction, filming, and post-production for CSULA’s LA28 Olympic marketing reel.',
     fullDescription: `We partnered with California State University, Los Angeles to produce a high-energy marketing reel in anticipation of the LA28 Olympic Games. The video was designed to highlight CSULA’s campus spirit, athletic culture, and community readiness as Los Angeles prepares to host the Olympics, merging storytelling with dynamic visuals.`,
