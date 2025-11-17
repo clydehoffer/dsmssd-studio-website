@@ -454,5 +454,43 @@ export const galleryData: GalleryData = {
       "title": "Academy Group: 2 Year Anniversary Celebration - Image 16",
       "description": "Portfolio piece from Academy Group: 2 Year Anniversary Celebration collection"
     }
+  ],
+  "9": [
+    {
+      "original": "/images/portfolio/9/main.jpg",
+      "thumbnail": "/images/portfolio/9/main.jpg",
+      "title": "CSULA LA28 Olympic Marketing Reel - Main Image",
+      "description": "Main portfolio image for CSULA LA28 Olympic marketing reel production"
+    },
+    {
+      "original": "/images/portfolio/9/screenshot-1.png",
+      "thumbnail": "/images/portfolio/9/screenshot-1.png",
+      "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 1",
+      "description": "Behind the scenes screenshot from CSULA LA28 Olympic marketing reel production"
+    },
+    {
+      "original": "/images/portfolio/9/screenshot-2.png",
+      "thumbnail": "/images/portfolio/9/screenshot-2.png",
+      "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 2",
+      "description": "Behind the scenes screenshot from CSULA LA28 Olympic marketing reel production"
+    },
+    {
+      "original": "/images/portfolio/9/screenshot-3.png",
+      "thumbnail": "/images/portfolio/9/screenshot-3.png",
+      "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 3",
+      "description": "Behind the scenes screenshot from CSULA LA28 Olympic marketing reel production"
+    },
+    {
+      "original": "/images/portfolio/9/screenshot-4.png",
+      "thumbnail": "/images/portfolio/9/screenshot-4.png",
+      "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 4",
+      "description": "Behind the scenes screenshot from CSULA LA28 Olympic marketing reel production"
+    },
+    {
+      "original": "/images/portfolio/9/screenshot-5.png",
+      "thumbnail": "/images/portfolio/9/screenshot-5.png",
+      "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 5",
+      "description": "Behind the scenes screenshot from CSULA LA28 Olympic marketing reel production"
+    }
   ]
 };
