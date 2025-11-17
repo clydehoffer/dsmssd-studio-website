@@ -79,7 +79,7 @@ const projects = [
     id: '9',
     title: 'California State University, Los Angeles: LA28 Olympic Marketing Reel',
     category: 'Video Production',
-    image: '/images/portfolio/6/main.jpg',
+    image: '/images/portfolio/9/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
     description: 'Creative direction, filming, and post-production for CSULA’s LA28 Olympic marketing reel.',
   },
