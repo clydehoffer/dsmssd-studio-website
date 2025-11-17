@@ -73,7 +73,7 @@ const projects = [
     category: 'Photography',
     image: '/images/portfolio/8/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
-    description: 'Event photography capturing the Academy Group's 2-year anniversary celebration.',
+    description: 'Event photography capturing the Academy Group\'s 2-year anniversary celebration.',
   },
   {
     id: '9',
