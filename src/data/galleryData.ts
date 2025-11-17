@@ -171,56 +171,56 @@ export const galleryData: GalleryData = {
       "description": "Main portfolio image for Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.36.23 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.36.23 AM.png",
+      "original": "/images/portfolio/4/screenshot-1.png",
+      "thumbnail": "/images/portfolio/4/screenshot-1.png",
       "title": "Music Video Production - Screenshot 1",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.36.38 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.36.38 AM.png",
+      "original": "/images/portfolio/4/screenshot-2.png",
+      "thumbnail": "/images/portfolio/4/screenshot-2.png",
       "title": "Music Video Production - Screenshot 2",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.36.56 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.36.56 AM.png",
+      "original": "/images/portfolio/4/screenshot-3.png",
+      "thumbnail": "/images/portfolio/4/screenshot-3.png",
       "title": "Music Video Production - Screenshot 3",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.37.32 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.37.32 AM.png",
+      "original": "/images/portfolio/4/screenshot-4.png",
+      "thumbnail": "/images/portfolio/4/screenshot-4.png",
       "title": "Music Video Production - Screenshot 4",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.37.42 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.37.42 AM.png",
+      "original": "/images/portfolio/4/screenshot-5.png",
+      "thumbnail": "/images/portfolio/4/screenshot-5.png",
       "title": "Music Video Production - Screenshot 5",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.37.53 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.37.53 AM.png",
+      "original": "/images/portfolio/4/screenshot-6.png",
+      "thumbnail": "/images/portfolio/4/screenshot-6.png",
       "title": "Music Video Production - Screenshot 6",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.38.01 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.38.01 AM.png",
+      "original": "/images/portfolio/4/screenshot-7.png",
+      "thumbnail": "/images/portfolio/4/screenshot-7.png",
       "title": "Music Video Production - Screenshot 7",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.38.19 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.38.19 AM.png",
+      "original": "/images/portfolio/4/screenshot-8.png",
+      "thumbnail": "/images/portfolio/4/screenshot-8.png",
       "title": "Music Video Production - Screenshot 8",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     },
     {
-      "original": "/images/portfolio/4/Screenshot 2025-06-08 at 12.38.29 AM.png",
-      "thumbnail": "/images/portfolio/4/Screenshot 2025-06-08 at 12.38.29 AM.png",
+      "original": "/images/portfolio/4/screenshot-9.png",
+      "thumbnail": "/images/portfolio/4/screenshot-9.png",
       "title": "Music Video Production - Screenshot 9",
       "description": "Behind the scenes screenshot from Mees! 'Without You' music video production"
     }
