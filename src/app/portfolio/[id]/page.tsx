@@ -273,7 +273,7 @@ export default function ProjectDetail() {
                 <VideoPlayerButton
                   videoUrl={(project as any).videoUrl}
                   title={project.title}
-                  description="Click to watch the full marketing reel"
+                  description="Click to watch the full production"
                   thumbnailUrl={project.image}
                   className="w-full max-w-2xl h-80 sm:h-96"
                 />
