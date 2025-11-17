@@ -8,6 +8,7 @@ import Footer from '../../../components/Footer';
 import ImageWithFallback from '../../../components/ui/ImageWithFallback';
 import ImageSlider from '../../../components/portfolio/ImageSlider';
 import ImageModal from '../../../components/ui/ImageModal';
+import VideoPlayerButton from '../../../components/ui/VideoPlayerButton';
 import { galleryData } from '../../../data/galleryData';
 
 // Sample portfolio projects data (in a real app, this would come from a database or API)
@@ -127,11 +128,12 @@ const projects = [
     year: '2025',
     image: '/images/portfolio/9/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2576&auto=format&fit=crop',
-    description: 'Creative direction, filming, and post-production for CSULA’s LA28 Olympic marketing reel.',
-    fullDescription: `We partnered with California State University, Los Angeles to produce a high-energy marketing reel in anticipation of the LA28 Olympic Games. The video was designed to highlight CSULA’s campus spirit, athletic culture, and community readiness as Los Angeles prepares to host the Olympics, merging storytelling with dynamic visuals.`,
-    challenge: `The challenge centered on creating a compelling narrative that authentically represented CSULA’s diverse community while aligning with the broader excitement surrounding LA28. Limited shoot windows and the need to film across multiple campus locations required efficient planning and unified creative direction.`,
-    solution: `We developed a visual concept rooted in movement, pride, and momentum—capturing student life, athletics, campus landmarks, and candid moments that speak to the university’s Olympic-era identity. A combination of stabilized motion shots, energetic editing, and bold graphics reinforced the LA28 aesthetic. Post-production focused on pacing, color grading, and integrating branded elements for a polished final cut.`,
-    results: `The final marketing reel delivered a spirited, visually striking showcase of CSULA’s role in the lead-up to LA28. The piece strengthened campus-wide promotional efforts, increased engagement across social platforms, and provided versatile content for use in university marketing, events, and Olympic-related outreach.`,
+    description: 'Creative direction, filming, and post-production for CSULA's LA28 Olympic marketing reel.',
+    fullDescription: `We partnered with California State University, Los Angeles to produce a high-energy marketing reel in anticipation of the LA28 Olympic Games. The video was designed to highlight CSULA's campus spirit, athletic culture, and community readiness as Los Angeles prepares to host the Olympics, merging storytelling with dynamic visuals.`,
+    challenge: `The challenge centered on creating a compelling narrative that authentically represented CSULA's diverse community while aligning with the broader excitement surrounding LA28. Limited shoot windows and the need to film across multiple campus locations required efficient planning and unified creative direction.`,
+    solution: `We developed a visual concept rooted in movement, pride, and momentum—capturing student life, athletics, campus landmarks, and candid moments that speak to the university's Olympic-era identity. A combination of stabilized motion shots, energetic editing, and bold graphics reinforced the LA28 aesthetic. Post-production focused on pacing, color grading, and integrating branded elements for a polished final cut.`,
+    results: `The final marketing reel delivered a spirited, visually striking showcase of CSULA's role in the lead-up to LA28. The piece strengthened campus-wide promotional efforts, increased engagement across social platforms, and provided versatile content for use in university marketing, events, and Olympic-related outreach.`,
+    videoUrl: '/videos/csula-la28-marketing-reel.mp4',
   },
   {
     id: '10',
@@ -269,6 +271,20 @@ export default function ProjectDetail() {
                   {project.results}
                 </p>
               </div>
+
+              {/* Video Player - Only show for video production projects */}
+              {project.category === 'Video Production' && (project as any).videoUrl && (
+                <div className="mt-12">
+                  <h3 className="font-display text-xl sm:text-2xl 3xl:text-3xl font-bold text-gray-900 dark:text-white mb-6">Watch the Video</h3>
+                  <VideoPlayerButton
+                    videoUrl={(project as any).videoUrl}
+                    title={project.title}
+                    description="Click to watch the full marketing reel"
+                    thumbnailUrl={project.image}
+                    className="w-full max-w-md"
+                  />
+                </div>
+              )}
             </div>
             
             <div className="rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
