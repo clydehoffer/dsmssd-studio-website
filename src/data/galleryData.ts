@@ -457,12 +457,6 @@ export const galleryData: GalleryData = {
   ],
   "9": [
     {
-      "original": "/images/portfolio/9/main.jpg",
-      "thumbnail": "/images/portfolio/9/main.jpg",
-      "title": "CSULA LA28 Olympic Marketing Reel - Main Image",
-      "description": "Main portfolio image for CSULA LA28 Olympic marketing reel production"
-    },
-    {
       "original": "/images/portfolio/9/screenshot-1.png",
       "thumbnail": "/images/portfolio/9/screenshot-1.png",
       "title": "CSULA LA28 Olympic Marketing Reel - Screenshot 1",
