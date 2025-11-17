@@ -240,6 +240,46 @@ export default function ProjectDetail() {
           </div>
         </div>
       </section>
+
+      {/* Video Player - Only show for video production projects */}
+      {project.category === 'Video Production' && (project as any).videoUrl && (
+        <section className="py-16 sm:py-20 bg-gray-50/50 dark:bg-gray-900/50">
+          <div className="responsive-container mx-auto px-4">
+            <div className="text-center">
+              <motion.h2 
+                className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                Watch the Video
+              </motion.h2>
+              <motion.p 
+                className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl mb-12 max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                Experience the full production in high quality
+              </motion.p>
+              <motion.div
+                className="flex justify-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <VideoPlayerButton
+                  videoUrl={(project as any).videoUrl}
+                  title={project.title}
+                  description="Click to watch the full marketing reel"
+                  thumbnailUrl={project.image}
+                  className="w-full max-w-2xl h-80 sm:h-96"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
       
       {/* Project Info */}
       <section className="py-10 sm:py-16">
@@ -272,19 +312,6 @@ export default function ProjectDetail() {
                 </p>
               </div>
 
-              {/* Video Player - Only show for video production projects */}
-              {project.category === 'Video Production' && (project as any).videoUrl && (
-                <div className="mt-12">
-                  <h3 className="font-display text-xl sm:text-2xl 3xl:text-3xl font-bold text-gray-900 dark:text-white mb-6">Watch the Video</h3>
-                  <VideoPlayerButton
-                    videoUrl={(project as any).videoUrl}
-                    title={project.title}
-                    description="Click to watch the full marketing reel"
-                    thumbnailUrl={project.image}
-                    className="w-full max-w-md"
-                  />
-                </div>
-              )}
             </div>
             
             <div className="rounded-lg bg-gray-50 p-6 dark:bg-gray-800">
