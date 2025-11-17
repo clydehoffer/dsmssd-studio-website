@@ -123,20 +123,30 @@ export default function VideoLightbox({
 
           {/* Video Container */}
           <div className="relative aspect-video bg-black">
-            <video
-              ref={setVideoElement}
-              src={videoUrl}
-              className="w-full h-full object-contain"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onEnded={() => setIsPlaying(false)}
-              controls={false}
-              playsInline
-            />
+            {videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be') ? (
+              <iframe
+                src={videoUrl}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <video
+                ref={setVideoElement}
+                src={videoUrl}
+                className="w-full h-full object-contain"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                onEnded={() => setIsPlaying(false)}
+                controls={false}
+                playsInline
+              />
+            )}
 
-            {/* Custom Controls Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-              <div className="flex items-center justify-between">
+            {/* Custom Controls Overlay - Only show for non-YouTube videos */}
+            {!videoUrl.includes('youtube.com') && !videoUrl.includes('youtu.be') && (
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   {/* Play/Pause Button */}
                   <button
@@ -180,7 +190,8 @@ export default function VideoLightbox({
                   </button>
                 </div>
               </div>
-            </div>
+            )}
+          </div>
 
             {/* Loading State */}
             {!videoElement && (

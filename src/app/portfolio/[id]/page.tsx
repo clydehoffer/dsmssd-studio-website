@@ -64,7 +64,7 @@ const projects = [
     challenge: `The creative direction needed to match Mees!'s energetic performance and genre-blending sound while delivering high visual quality within a tight production window. With limited shoot days and multiple location setups, every shot had to deliver impact.`,
     solution: `We leaned into bold lighting, expressive motion, and intuitive handheld tracking to create a dynamic visual world. By pairing natural scenery with stylized effects and color treatments, the final product evokes both cinematic clarity and street-level energy. The use of vibrant lighting transitions and fluid edits amplified the track's emotional momentum from start to finish.`,
     results: `The video premiered on YouTube and instantly added to Mees!'s growing traction as an emerging artist. "Without You" has helped solidify his visual brand and received strong fan and industry response—marking another successful collaboration between our team and Nashbrowin.`,
-    videoUrl: '/videos/mees-without-you-music-video.mp4',
+    videoUrl: 'https://www.youtube.com/embed/4zQwC9YK-Zk',
     videoEmbed: 'https://www.youtube.com/embed/4zQwC9YK-Zk',
   },
   {

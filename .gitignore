@@ -82,3 +82,8 @@ memory-bank/
 "Isaiah Cotton Resume copy.pdf"
 "logo assets/"
 "visual core/"
+
+# Large video files (too big for GitHub/Vercel)
+public/videos/csula-la28-marketing-reel.mp4
+public/videos/leigh-hideaway-music-video.mp4
+public/videos/mees-without-you-music-video.mp4
