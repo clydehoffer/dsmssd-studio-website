@@ -29,7 +29,7 @@ const projects = [
   {
     id: '2',
     title: 'Fashion Lookbook',
-    category: 'Photography',
+    category: 'Fashion',
     client: 'Solivagant',
     year: '2023',
     image: '/images/portfolio/2/main.jpg',
