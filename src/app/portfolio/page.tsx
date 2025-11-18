@@ -22,7 +22,7 @@ const projects = [
   {
     id: '2',
     title: 'Fashion Lookbook',
-    category: 'Fashion',
+    category: 'Photography',
     image: '/images/portfolio/2/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2574&auto=format&fit=crop',
     description: 'Fashion photography and lookbook design showcasing seasonal collections and styling.',
@@ -30,7 +30,7 @@ const projects = [
   {
     id: '3',
     title: 'Brand Activation & Event Production',
-    category: 'Experiential',
+    category: 'Photography',
     image: '/images/portfolio/3/main.jpg',
     fallbackImage: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2670&auto=format&fit=crop',
     description: 'Full-service event production, brand activations, and experiential marketing campaigns.',
