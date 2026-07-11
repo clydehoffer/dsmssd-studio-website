@@ -121,4 +121,4 @@ The code includes a fallback to MP4 if the MOV file doesn't play in certain brow
 - `/public` - Static assets including images, videos, and fonts
 - `/src/app` - Next.js app router pages
 - `/src/components` - Reusable UI components
-- `/src/styles` - Global styles and Tailwind configuration 
+- `/src/styles` - Global styles and Tailwind configuration # isaiahcottonwebsite
